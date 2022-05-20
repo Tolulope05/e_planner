@@ -39,7 +39,7 @@ class MyhomePage extends StatelessWidget {
         title: const Text('ToluCoder App'),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           const SizedBox(
@@ -49,6 +49,37 @@ class MyhomePage extends StatelessWidget {
               elevation: 5,
               child: SizedBox(
                 child: Text('CHART!'),
+              ),
+            ),
+          ),
+          Card(
+            elevation: 5,
+            child: Container(
+              padding: EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  TextField(
+                    autocorrect: true,
+                    decoration: InputDecoration(
+                      labelText: 'Title',
+                    ),
+                  ),
+                  TextField(
+                    autocorrect: true,
+                    decoration: InputDecoration(
+                      labelText: 'Amount',
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () => {},
+                    style: ButtonStyle(
+                      foregroundColor: MaterialStateProperty.all(Colors.white),
+                      backgroundColor: MaterialStateProperty.all(Colors.purple),
+                    ),
+                    child: Text('Add Transaction'),
+                  ),
+                ],
               ),
             ),
           ),
