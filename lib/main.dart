@@ -22,6 +22,12 @@ class MyhomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('ToluCoder App'),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.add),
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -41,6 +47,11 @@ class MyhomePage extends StatelessWidget {
             UserTransactions(),
           ],
         ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.add),
       ),
     );
   }
