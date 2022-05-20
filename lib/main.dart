@@ -32,6 +32,9 @@ class MyhomePage extends StatelessWidget {
       date: DateTime.now(),
     )
   ];
+  late String titleInput;
+  late String amountInput;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,18 +64,27 @@ class MyhomePage extends StatelessWidget {
                 children: [
                   TextField(
                     autocorrect: true,
+                    onChanged: (val) {
+                      titleInput = val;
+                    },
                     decoration: InputDecoration(
                       labelText: 'Title',
                     ),
                   ),
                   TextField(
                     autocorrect: true,
+                    onChanged: (val) {
+                      amountInput = val;
+                    },
                     decoration: InputDecoration(
                       labelText: 'Amount',
                     ),
                   ),
                   TextButton(
-                    onPressed: () => {},
+                    onPressed: () => {
+                      print(titleInput),
+                      print(amountInput),
+                    },
                     style: ButtonStyle(
                       foregroundColor: MaterialStateProperty.all(Colors.white),
                       backgroundColor: MaterialStateProperty.all(Colors.purple),
