@@ -5,25 +5,42 @@ import './widgets/new_transaction.dart';
 import './models/transaction.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Personal Expenses',
-      home: MyhomePage(),
+      home: const MyhomePage(),
       theme: ThemeData(
         primarySwatch: Colors.green,
         colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.green)
             .copyWith(secondary: Colors.amber),
+        fontFamily: 'Quicksand',
+        textTheme: const TextTheme(
+          headline6: TextStyle(
+            fontFamily: 'OpenSans',
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+          bodyText2: TextStyle(
+            fontFamily: 'OpenSans',
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+          ),
+        ),
       ),
     );
   }
 }
 
 class MyhomePage extends StatefulWidget {
+  const MyhomePage({Key? key}) : super(key: key);
+
   @override
   State<MyhomePage> createState() => _MyhomePageState();
 }
@@ -73,11 +90,13 @@ class _MyhomePageState extends State<MyhomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Personal Expenses'),
+        title: const Text(
+          'Personal Expenses',
+        ),
         actions: [
           IconButton(
             onPressed: () => _startAddNewTransaction(context),
-            icon: Icon(Icons.add),
+            icon: const Icon(Icons.add),
           ),
         ],
       ),
@@ -103,7 +122,7 @@ class _MyhomePageState extends State<MyhomePage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
         onPressed: () => _startAddNewTransaction(context),
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }
