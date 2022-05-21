@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
-class ChatBar extends StatelessWidget {
-  // const ChatBar({Key? key}) : super(key: key);
+class ChartBar extends StatelessWidget {
   final String label;
   final double spendingAmount;
-  final double speindingPctOfTotal;
+  final double spendingPctOfTotal;
 
-  const ChatBar(this.label, this.spendingAmount, this.speindingPctOfTotal);
+  ChartBar(this.label, this.spendingAmount, this.spendingPctOfTotal);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +27,7 @@ class ChatBar extends StatelessWidget {
               ),
             ),
             FractionallySizedBox(
-              heightFactor: speindingPctOfTotal,
+              heightFactor: spendingPctOfTotal,
               child: Container(
                 decoration: BoxDecoration(
                   color: Theme.of(context).primaryColor,
