@@ -42,7 +42,7 @@ class ChartBar extends StatelessWidget {
             ),
           ]),
         ),
-        SizedBox(
+        const SizedBox(
           height: 4,
         ),
         Text(label),

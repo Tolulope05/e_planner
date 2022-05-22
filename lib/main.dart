@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
       home: const MyhomePage(),
       theme: ThemeData(
         primarySwatch: Colors.green,
+        errorColor: Colors.redAccent,
         colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.green)
             .copyWith(secondary: Colors.amber),
         fontFamily: 'Quicksand',
@@ -66,7 +67,7 @@ class _MyhomePageState extends State<MyhomePage> {
     return _userTransactions.where((tx) {
       return tx.date.isAfter(
         DateTime.now().subtract(
-          Duration(days: 7),
+          const Duration(days: 7),
         ),
       );
     }).toList();
@@ -97,6 +98,12 @@ class _MyhomePageState extends State<MyhomePage> {
         });
   }
 
+  void _deleteTransaction(String id) {
+    setState(() {
+      _userTransactions.removeWhere((tx) => tx.id == id);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -117,7 +124,7 @@ class _MyhomePageState extends State<MyhomePage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Chart(_recentTransactions),
-            TransactionList(_userTransactions),
+            TransactionList(_userTransactions, _deleteTransaction),
           ],
         ),
       ),
