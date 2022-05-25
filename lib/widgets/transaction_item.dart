@@ -46,6 +46,7 @@ class _TransactionItemState extends State<TransactionItem> {
       child: ListTile(
         leading: CircleAvatar(
           backgroundColor: _bgColor,
+          foregroundColor: Colors.white,
           radius: 30,
           child: Padding(
             padding: const EdgeInsets.all(5),
