@@ -1,8 +1,10 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import '../models/transaction.dart';
 import 'package:intl/intl.dart';
 
-class TransactionItem extends StatelessWidget {
+class TransactionItem extends StatefulWidget {
   const TransactionItem({
     Key? key,
     required this.transaction,
@@ -11,6 +13,27 @@ class TransactionItem extends StatelessWidget {
 
   final Transaction transaction;
   final Function deleteTx;
+
+  @override
+  State<TransactionItem> createState() => _TransactionItemState();
+}
+
+class _TransactionItemState extends State<TransactionItem> {
+  late Color _bgColor;
+
+  @override
+  void initState() {
+    const availbleColors = [
+      Colors.red,
+      Colors.lightBlue,
+      Colors.amber,
+      Colors.grey,
+      Colors.purple,
+    ];
+
+    _bgColor = availbleColors[Random().nextInt(5)];
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,22 +45,23 @@ class TransactionItem extends StatelessWidget {
       elevation: 2,
       child: ListTile(
         leading: CircleAvatar(
+          backgroundColor: _bgColor,
           radius: 30,
           child: Padding(
             padding: const EdgeInsets.all(5),
             child: FittedBox(
               child: Text(
-                '\$${transaction.amount}',
+                '\$${widget.transaction.amount}',
               ),
             ),
           ),
         ),
         title: Text(
-          transaction.title,
+          widget.transaction.title,
           style: Theme.of(context).textTheme.bodyText2,
         ),
         subtitle: Text(
-          DateFormat.yMMMd().format(transaction.date),
+          DateFormat.yMMMd().format(widget.transaction.date),
           style: const TextStyle(
             fontSize: 12,
             color: Colors.grey,
@@ -50,7 +74,7 @@ class TransactionItem extends StatelessWidget {
                   Icons.delete,
                   color: Colors.red,
                 ),
-                onPressed: () => deleteTx(transaction.id),
+                onPressed: () => widget.deleteTx(widget.transaction.id),
                 label: const Text(
                   'Delete',
                   style: TextStyle(color: Colors.red),
@@ -62,7 +86,7 @@ class TransactionItem extends StatelessWidget {
                   color: Colors.red,
                 ),
                 color: Theme.of(context).errorColor,
-                onPressed: () => deleteTx(transaction.id),
+                onPressed: () => widget.deleteTx(widget.transaction.id),
               ),
       ),
     );

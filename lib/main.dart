@@ -119,7 +119,7 @@ class _MyhomePageState extends State<MyhomePage> with WidgetsBindingObserver {
   void _startAddNewTransaction(BuildContext ctx) {
     showModalBottomSheet(
         context: ctx,
-        builder: (_) {
+        builder: (context) {
           return GestureDetector(
             onTap: () {},
             behavior: HitTestBehavior.opaque,
